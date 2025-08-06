@@ -1,0 +1,722 @@
+{
+	"info": {
+		"_postman_id": "211f81d1-5215-49b0-a97a-f65a45c78c4e",
+		"name": "ParaBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47307194",
+		"_collection_link": "https://pranav-ramamoorthy-2254956.postman.co/workspace/Pranav's-Workspace~20ad5756-4f1e-4042-8c46-b99558527e84/collection/47307194-211f81d1-5215-49b0-a97a-f65a45c78c4e?action=share&source=collection_link&creator=47307194"
+	},
+	"item": [
+		{
+			"name": "register",
+			"item": [
+				{
+					"name": "getRegister",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(`Status code is 200`, () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000 ms\", () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.lessThan(1000);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Session cookie exist\", () => {\r",
+									"    pm.expect(pm.cookies.has(\"JSESSIONID\")).to.be.true;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "customer.firstName",
+									"value": "John",
+									"type": "text"
+								},
+								{
+									"key": "customer.lastName",
+									"value": "Doe",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.street",
+									"value": "123 Main St",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.city",
+									"value": "New York",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.state",
+									"value": "NY",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.zipCode",
+									"value": "10001",
+									"type": "text"
+								},
+								{
+									"key": "customer.phoneNumber",
+									"value": "1234567890",
+									"type": "text"
+								},
+								{
+									"key": "customer.ssn",
+									"value": "123-45-6789",
+									"type": "text"
+								},
+								{
+									"key": "customer.username",
+									"value": "johndoe12344",
+									"type": "text"
+								},
+								{
+									"key": "customer.password",
+									"value": "Test@123",
+									"type": "text"
+								},
+								{
+									"key": "repeatedPassword",
+									"value": "Test@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://parabank.parasoft.com/parabank/register.htm",
+							"protocol": "https",
+							"host": [
+								"parabank",
+								"parasoft",
+								"com"
+							],
+							"path": [
+								"parabank",
+								"register.htm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registerUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(`Status code is 200`, () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(`Response time is below 1000 ms`, () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"})\r",
+									"\r",
+									"pm.test(`Session cookie exist`, () => {\r",
+									"    pm.expect(pm.cookies.has(\"JSESSIONID\")).to.be.true;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "customer.firstName",
+									"value": "{{firstName}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.lastName",
+									"value": "{{lastName}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.street",
+									"value": "{{street}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.city",
+									"value": "{{city}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.state",
+									"value": "{{state}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.address.zipCode",
+									"value": "{{zipCode}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.phoneNumber",
+									"value": "{{phoneNumber}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.ssn",
+									"value": "{{SSN}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.username",
+									"value": "{{userName}}",
+									"type": "text"
+								},
+								{
+									"key": "customer.password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "repeatedPassword",
+									"value": "{{confirmPass}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/parabank/register.htm",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"register.htm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create-new-account",
+			"item": [
+				{
+					"name": "accountsList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"const accountID = responseBody[responseBody.length-1].id;\r",
+									"const customerID = responseBody[responseBody.length-1].customerId;\r",
+									"pm.environment.set(\"accountID\", accountID);\r",
+									"pm.environment.set(\"customerID\", customerID);\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\" : \"array\",\r",
+									"    \"items\" : {\r",
+									"        \"type\" : \"object\",\r",
+									"        \"required\" : [\"id\", \"customerId\", \"type\", \"balance\"],\r",
+									"        \"properties\" : {\r",
+									"            \"id\" : {\"type\" : \"integer\"},\r",
+									"            \"customerId\" : {\"type\" : \"integer\"},\r",
+									"            \"type\" : {\"type\" : \"string\"},\r",
+									"            \"balance\" : {\"type\" : \"number\"}\r",
+									"        },\r",
+									"        \"additionalProperties\" : false\r",
+									"    }\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Response data is an array\", () => {\r",
+									"    pm.expect(responseBody).to.be.an(`array`);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Response body is valid\", () => {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/parabank/services_proxy/bank/customers/{{customerID}}/accounts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"customers",
+								"{{customerID}}",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createAcc",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"const type = pm.environment.get(\"accountType\") === 0 ? \"CHECKING\" : \"SAVINGS\";\r",
+									"\r",
+									"pm.environment.set(\"newAccID\", responseBody.id);\r",
+									"\r",
+									"pm.test('Status code is 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(`Response time less than 1000 ms`, () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.lessThan(1000);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Valid response data\", () => {\r",
+									"    pm.expect(responseBody.id).not.to.be.equal(null);\r",
+									"    pm.expect(responseBody.customerId).to.equal(Number(pm.environment.get(\"customerID\")));\r",
+									"    pm.expect(responseBody.type).to.equal(type);\r",
+									"    pm.expect(responseBody.balance).to.exist;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseURL}}/parabank/services_proxy/bank/createAccount?customerId={{customerID}}&newAccountType={{accountType}}&fromAccountId={{accountID}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"createAccount"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "{{customerID}}"
+								},
+								{
+									"key": "newAccountType",
+									"value": "{{accountType}}"
+								},
+								{
+									"key": "fromAccountId",
+									"value": "{{accountID}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getNewAcccount",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"const type = pm.environment.get(\"accountType\") === 0 ? \"CHECKING\" : \"SAVINGS\";\r",
+									"\r",
+									"pm.test('Status code is 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(`Response time less than 1000 ms`, () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.lessThan(1000);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Valid response data\", () => {\r",
+									"    pm.expect(responseBody.id).not.to.be.equal(null);\r",
+									"    pm.expect(responseBody.customerId).to.equal(Number(pm.environment.get(\"customerID\")));\r",
+									"    pm.expect(responseBody.type).to.equal(type);\r",
+									"    pm.expect(responseBody.balance).to.exist;\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/parabank/services_proxy/bank/accounts/{{newAccID}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"accounts",
+								"{{newAccID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "accounts-overview",
+			"item": [
+				{
+					"name": "accountsList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\" : \"array\",\r",
+									"    \"items\" : {\r",
+									"        \"type\" : \"object\",\r",
+									"        \"required\" : [\"id\", \"customerId\", \"type\", \"balance\"],\r",
+									"        \"properties\" : {\r",
+									"            \"id\" : {\"type\" : \"integer\"},\r",
+									"            \"customerId\" : {\"type\" : \"integer\"},\r",
+									"            \"type\" : {\"type\" : \"string\"},\r",
+									"            \"balance\" : {\"type\" : \"number\"}\r",
+									"        },\r",
+									"        \"additionalProperties\" : false\r",
+									"    }\r",
+									"}\r",
+									"\r",
+									"pm.test(\"Response data is array\", () => {\r",
+									"    pm.expect(responseBody).to.be.an(`array`);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Response body is valid\", () => {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/parabank/services_proxy/bank/customers/{{customerID}}/accounts",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"customers",
+								"{{customerID}}",
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "accTransactions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"\r",
+									"const schema = {\r",
+									"    \"type\" : \"array\",\r",
+									"    \"items\" : {\r",
+									"        \"type\" : \"object\",\r",
+									"        \"required\" : [\"id\", \"accountId\", \"type\", \"date\", \"amount\", \"description\"],\r",
+									"        \"properties\" : {\r",
+									"            \"id\" : {\"type\" : \"number\"},\r",
+									"            \"accountId\" : {\"type\" : \"number\"},\r",
+									"            \"type\" : {\"type\" : \"string\"},\r",
+									"            \"date\" : {\"type\" : \"number\"},\r",
+									"            \"amount\" : {\"type\" : \"number\"},\r",
+									"            \"description\" : {\"type\" : \"string\"}\r",
+									"        },\r",
+									"        \"additionalProperties\" : false\r",
+									"    }\r",
+									"};\r",
+									"\r",
+									"pm.test(`Status code is 200`, () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(`Response time is less than 1000ms`, () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(`Response data follows schema`, () => {\r",
+									"    pm.response.to.have.jsonSchema(schema);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://parabank.parasoft.com/parabank/services_proxy/bank/accounts/{{newAccID}}/transactions/month/All/type/All",
+							"protocol": "https",
+							"host": [
+								"parabank",
+								"parasoft",
+								"com"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"accounts",
+								"{{newAccID}}",
+								"transactions",
+								"month",
+								"All",
+								"type",
+								"All"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fund-transfer",
+			"item": [
+				{
+					"name": "fundTransfer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"})\r",
+									"\r",
+									"pm.test(`Content-Type is application/json`, () => {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.equal(`application/json`);\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Response data contains a message\", () => {\r",
+									"    const message = pm.response.text();\r",
+									"    pm.expect(message).to.be.a(`string`);\r",
+									"    pm.expect(message).to.include(pm.environment.get(\"accountID\"))\r",
+									"    pm.expect(message).to.include(pm.environment.get(\"newAccID\"))\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://parabank.parasoft.com/parabank/services_proxy/bank/transfer?fromAccountId={{accountID}}&toAccountId={{newAccID}}&amount={{amount}}",
+							"protocol": "https",
+							"host": [
+								"parabank",
+								"parasoft",
+								"com"
+							],
+							"path": [
+								"parabank",
+								"services_proxy",
+								"bank",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "fromAccountId",
+									"value": "{{accountID}}"
+								},
+								{
+									"key": "toAccountId",
+									"value": "{{newAccID}}"
+								},
+								{
+									"key": "amount",
+									"value": "{{amount}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"item": [
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(`Status code is 200`, () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"pm.test(`Response time is less than 1000ms`, () => {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"})"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/parabank/logout.htm",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"parabank",
+								"logout.htm"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
